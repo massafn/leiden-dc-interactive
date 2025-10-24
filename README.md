@@ -3,6 +3,6 @@
 
 ## Live Demo
 
-👉 **[View Interactive Notebook](https://YOUR-USERNAME.github.io/leiden-dc-interactive/)**
+👉 **[View Interactive Notebook](https://massafn.github.io/leiden-dc-interactive/)**
 
 
