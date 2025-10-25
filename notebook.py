@@ -34,6 +34,7 @@ def __(mo):
 def __(mo, pd):
     import json
     import requests
+    from io import StringIO
 
     # Enable HTTP requests in WASM/Pyodide
     try:
@@ -42,9 +43,10 @@ def __(mo, pd):
     except ImportError:
         pass
 
-    # Load results from GitHub
+    # Load results from GitHub - use requests then parse
     results_url = 'https://massafn.github.io/leidendc/leiden_gamma_sweep_results.csv'
-    results_df = pd.read_csv(results_url)
+    csv_response = requests.get(results_url)
+    results_df = pd.read_csv(StringIO(csv_response.text))
 
     # Load cluster legend info with actual cluster IDs
     legend_url = 'https://massafn.github.io/leidendc/cluster_legend_info.json'
