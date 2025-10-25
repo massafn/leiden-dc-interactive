@@ -35,6 +35,13 @@ def __(mo, pd):
     import json
     import requests
 
+    # Enable HTTP requests in WASM/Pyodide
+    try:
+        import pyodide_http
+        pyodide_http.patch_all()
+    except ImportError:
+        pass
+
     # Load results from GitHub
     results_url = 'https://massafn.github.io/leidendc/leiden_gamma_sweep_results.csv'
     results_df = pd.read_csv(results_url)
